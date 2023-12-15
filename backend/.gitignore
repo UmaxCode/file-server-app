@@ -1,0 +1,42 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+venv/
+venv*/
+__pycache__/
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Compiled Python files
+*.pyc
+
+
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Django Secret Key
+
+
+# Ignore environment configuration
+.env
+
+# Ignore Visual Studio Code settings
+.vscode/
