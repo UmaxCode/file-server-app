@@ -1,0 +1,13 @@
+:root {
+  --background-color: #ebeaeb;
+  --left-container-color: #400d40;
+}
+
+.auth-temp-container {
+  background-color: var(--background-color);
+  height: 100vh;
+}
+
+.auth-col-left {
+  background-color: var(--left-container-color);
+}
