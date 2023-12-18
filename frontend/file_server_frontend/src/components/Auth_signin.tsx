@@ -4,6 +4,7 @@ import google_icon from "../assets/images/google_icon.png";
 
 import { useFormBindingHook } from "../hooks/useFormBindingHook";
 import PasswordInput from "./passwordInput";
+import ActionButton from "./Buttons/actionButton";
 
 const initialFormInput = {
   email: "",
@@ -11,13 +12,11 @@ const initialFormInput = {
 };
 
 const Auth_signin = () => {
-  const [formInput, onFormChangeInput, onFormSubmit] = useFormBindingHook(
-    initialFormInput,
-    "http://localhost:3001/logins"
-  );
-  console.log(formInput);
+  const [formInput, onFormChangeInput, onFormSubmit, formErrors, submited] =
+    useFormBindingHook(initialFormInput, "http://localhost:3001/logins");
+
   return (
-    <form method="post" onSubmit={onFormSubmit}>
+    <form method="post" onSubmit={onFormSubmit} noValidate>
       <div className="mb-4">
         <h2 className="text-primary fw-bold">Sign In</h2>
       </div>
@@ -34,6 +33,7 @@ const Auth_signin = () => {
           value={formInput.email}
           onChange={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.email}</div>
       </div>
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
@@ -43,10 +43,11 @@ const Auth_signin = () => {
         <PasswordInput
           name="password"
           placeholder="*********"
-          value={formInput.conpassword}
+          value={formInput.password}
           id="password"
           onFormChangeInput={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.password}</div>
       </div>
 
       <div className="container-fluid">
@@ -70,9 +71,7 @@ const Auth_signin = () => {
         </div>
       </div>
       <div className="mt-4 d-grid d-lg-block">
-        <button className="btn btn-primary d-flex align-items-center">
-          <i className="bi bi-arrow-down-circle-fill fs-5 me-2"></i> Sign in
-        </button>
+        <ActionButton submited={submited} signup={false} />
       </div>
       <div className="">
         <p className="text-center mt-3 fw-bold">OR</p>

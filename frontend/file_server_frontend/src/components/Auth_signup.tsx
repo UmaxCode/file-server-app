@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useFormBindingHook } from "../hooks/useFormBindingHook";
 import PasswordInput from "./passwordInput";
+import ActionButton from "./Buttons/actionButton";
 
 const initialFormInput = {
   username: "",
@@ -8,15 +9,14 @@ const initialFormInput = {
   password: "",
   conpassword: "",
 };
+
 const Auth_signup = () => {
-  const [formInput, onFormChangeInput, onFormSubmit] = useFormBindingHook(
-    initialFormInput,
-    " http://localhost:3001/users"
-  );
+  const [formInput, onFormChangeInput, onFormSubmit, formErrors, submited] =
+    useFormBindingHook(initialFormInput, " http://localhost:3001/users");
 
   console.log(formInput);
   return (
-    <form action="" method="post" onSubmit={onFormSubmit}>
+    <form method="post" onSubmit={onFormSubmit} noValidate>
       <div className="mb-4">
         <h2 className="text-primary fw-bold">Sign Up</h2>
       </div>
@@ -33,6 +33,7 @@ const Auth_signup = () => {
           value={formInput.username}
           onChange={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.username}</div>
       </div>
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
@@ -47,6 +48,7 @@ const Auth_signup = () => {
           value={formInput.email}
           onChange={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.email}</div>
       </div>
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
@@ -60,6 +62,7 @@ const Auth_signup = () => {
           id="password"
           onFormChangeInput={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.password}</div>
       </div>
       <div className="mb-3">
         <label htmlFor="conpassword" className="form-label">
@@ -73,6 +76,7 @@ const Auth_signup = () => {
           id="conpassword"
           onFormChangeInput={onFormChangeInput}
         />
+        <div className="text-danger ps-2">{formErrors.conpassword}</div>
       </div>
 
       <div className="mb-2 d-flex align-items-center">
@@ -84,9 +88,7 @@ const Auth_signup = () => {
         </span>
       </div>
       <div className="mt-4 d-grid d-lg-block">
-        <button className="btn btn-primary d-flex align-items-center">
-          <i className="bi bi-arrow-up-right-circle-fill fs-5 me-2"></i> Sign up
-        </button>
+        <ActionButton submited={submited} signup={true} />
       </div>
     </form>
   );
