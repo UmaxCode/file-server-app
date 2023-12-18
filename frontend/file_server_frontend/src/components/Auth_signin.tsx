@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import google_icon from "../assets/images/google_icon.png";
 
 import { useFormBindingHook } from "../hooks/useFormBindingHook";
+import PasswordInput from "./passwordInput";
 
 const initialFormInput = {
   email: "",
@@ -10,10 +11,13 @@ const initialFormInput = {
 };
 
 const Auth_signin = () => {
-  const [formInput, onFormChangeInput] = useFormBindingHook(initialFormInput);
+  const [formInput, onFormChangeInput, onFormSubmit] = useFormBindingHook(
+    initialFormInput,
+    "http://localhost:3001/logins"
+  );
   console.log(formInput);
   return (
-    <form action="" method="post">
+    <form method="post" onSubmit={onFormSubmit}>
       <div className="mb-4">
         <h2 className="text-primary fw-bold">Sign In</h2>
       </div>
@@ -35,14 +39,13 @@ const Auth_signin = () => {
         <label htmlFor="password" className="form-label">
           Password
         </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
+
+        <PasswordInput
           name="password"
-          placeholder="***********"
-          value={formInput.password}
-          onChange={onFormChangeInput}
+          placeholder="*********"
+          value={formInput.conpassword}
+          id="password"
+          onFormChangeInput={onFormChangeInput}
         />
       </div>
 
@@ -89,7 +92,7 @@ const Auth_signin = () => {
         <span>
           Don't have an account?
           <Link to="/auth-account/sign-up" className="text-primary ms-1">
-            Login Here
+            Signup Here
           </Link>
         </span>
       </div>

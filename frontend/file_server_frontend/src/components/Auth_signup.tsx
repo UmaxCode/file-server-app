@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFormBindingHook } from "../hooks/useFormBindingHook";
-import axios from "axios";
+import PasswordInput from "./passwordInput";
 
 const initialFormInput = {
   username: "",
@@ -9,37 +9,12 @@ const initialFormInput = {
   conpassword: "",
 };
 const Auth_signup = () => {
-  const [formInput, onFormChangeInput] = useFormBindingHook(initialFormInput);
+  const [formInput, onFormChangeInput, onFormSubmit] = useFormBindingHook(
+    initialFormInput,
+    " http://localhost:3001/users"
+  );
+
   console.log(formInput);
-
-  const onFormSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // Define the data you want to send in the request body
-      const data = {
-        ...formInput,
-      };
-
-      // Make a POST request
-      const response = await axios.post(
-        "https://example.com/api/endpoint",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json", // Indicates that you are sending JSON data
-            Authorization: "Bearer YourAccessToken", // Example: Include an authorization token
-            // Add other headers as needed
-          },
-        }
-      );
-
-      // Handle the response data
-      console.log("Response:", response.data);
-    } catch (error) {
-      // Handle errors
-      console.error("Error:", error);
-    }
-  };
   return (
     <form action="" method="post" onSubmit={onFormSubmit}>
       <div className="mb-4">
@@ -77,28 +52,26 @@ const Auth_signup = () => {
         <label htmlFor="password" className="form-label">
           Password
         </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
+
+        <PasswordInput
           name="password"
-          placeholder="***********"
+          placeholder="*********"
           value={formInput.password}
-          onChange={onFormChangeInput}
+          id="password"
+          onFormChangeInput={onFormChangeInput}
         />
       </div>
       <div className="mb-3">
         <label htmlFor="conpassword" className="form-label">
           Confirm password
         </label>
-        <input
-          type="conpassword"
-          className="form-control"
-          id="conpassword"
+
+        <PasswordInput
           name="conpassword"
-          placeholder="***********"
+          placeholder="*********"
           value={formInput.conpassword}
-          onChange={onFormChangeInput}
+          id="conpassword"
+          onFormChangeInput={onFormChangeInput}
         />
       </div>
 
