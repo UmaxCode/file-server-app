@@ -1,7 +1,14 @@
-const ActionButton = ({ submited, signup }) => {
+import { useEffect } from "react";
+
+const ActionButton = ({ formActionState, signup }: any) => {
+  useEffect(() => {}, []);
+
   return (
-    <button className="btn btn-primary d-flex align-items-center">
-      {submited ? (
+    <button
+      className="btn btn-primary d-flex align-items-center"
+      disabled={formActionState.notify ? true : false}
+    >
+      {formActionState.submit ? (
         signup ? (
           <>
             <i className="bi bi-arrow-up-right-circle-fill fs-5 me-2"></i>

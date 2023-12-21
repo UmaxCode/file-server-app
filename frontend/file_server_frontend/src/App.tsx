@@ -10,11 +10,13 @@ import {
   createRoutesFromChildren,
   RouterProvider,
 } from "react-router-dom";
+import HompageTemplate from "./containers/HompageTemplate";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromChildren(
       <Route>
+        <Route path="/" element={<HompageTemplate />}></Route>
         <Route path="auth-account/" element={<Auth_container_temp />}>
           <Route path="sign-up" element={<Auth_signup />} />
           <Route path="sign-in" element={<Auth_signin />} />

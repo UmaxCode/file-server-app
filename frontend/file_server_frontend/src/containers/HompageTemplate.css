@@ -1,0 +1,43 @@
+.home-aside {
+  display: none;
+}
+
+.home-article {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .home-main::before {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .home-section {
+    float: left;
+    width: 70% !important;
+  }
+
+  .home-aside {
+    display: block;
+
+    float: left;
+    width: 30% !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .home-section {
+    width: 50% !important;
+  }
+
+  .home-aside {
+    width: 25% !important;
+  }
+
+  .home-article {
+    width: 25% !important;
+    float: left;
+    display: block;
+  }
+}
+@media screen and (min-width: 1200px) {
+}
