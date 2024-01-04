@@ -9,7 +9,10 @@ const Auth_container_temp = () => {
           <img src={authImage} alt="image to represent authentication" />
         </div>
         <div className="col-lg-6 d-flex justify-content-center align-items-center">
-          <div className="auth-form-container w-75">
+          <div
+            className="auth-form-container w-75 
+          "
+          >
             <Outlet />
           </div>
         </div>
