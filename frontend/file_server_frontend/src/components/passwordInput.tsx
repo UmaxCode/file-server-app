@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const PasswordInput = ({ name, value, placeholder, id, onFormChangeInput }) => {
+const PasswordInput = ({
+  name,
+  value,
+  placeholder,
+  id,
+  onFormChangeInput,
+}: any) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (

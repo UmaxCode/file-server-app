@@ -1,4 +1,4 @@
-const RightSlider = ({ projects, avatar }) => {
+const RightSlider = ({ projects, avatar }: any) => {
   return (
     <article className="rounded position-sticky" style={{ top: "80px" }}>
       <div className="text-center bg-white p-3 mb-3">
@@ -22,7 +22,7 @@ const RightSlider = ({ projects, avatar }) => {
         <div className="">
           <div className="">
             {projects ? (
-              projects.map((component, index) => {
+              projects.map((component: any, index: any) => {
                 return (
                   <div className=" d-flex gap-2 mb-2" key={index}>
                     <div className=" d-flex justify-content-center align-items-center">

@@ -1,4 +1,4 @@
-const FileCard = ({ file, avatar }) => {
+const FileCard = ({ file, avatar }: any) => {
   return (
     <div className="bg-white text-primary p-2  rounded">
       <div className="d-flex justify-content-between align-items-center mb-2">
